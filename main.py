@@ -2,16 +2,18 @@
 
 from time import sleep
 from ev3dev2.sound import Sound
-from ev3dev2.motor import LargeMotor
+from ev3dev2.motor import LargeMotor, MediumMotor
 
 
 class Motors:
     def __init__(self, ports):
         self.motors = [LargeMotor(address) for address in ports]
+        self.mm = MediumMotor('outA')
 
     def move(self, s1, s2, t):
         self.motors[0].run_timed(speed_sp=s1, time_sp=t)
         self.motors[1].run_timed(speed_sp=s2, time_sp=t)
+        self.mm.run_timed(speed_sp=500, time_sp=1000)
         sleep((t-10)/1000)
 
 
