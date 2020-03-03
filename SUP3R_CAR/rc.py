@@ -13,9 +13,6 @@ class SUP3R_CAR():
             self.steer.stop()
 
     def __init__(self):
-        self.sound = Sound()
-        self.sound.beep()
-
         self.tank = RemoteControlledTank('outB', 'outC')
         self.tank.on_for_seconds(50, 50, 0.2)
         self.steer = MediumMotor('outA')
@@ -23,4 +20,6 @@ class SUP3R_CAR():
         self.tank.main()
 
 
+sound = Sound()
+sound.beep()
 car = SUP3R_CAR()
